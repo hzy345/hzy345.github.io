@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人网站</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="logo">My Website</div>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#about">关于</a></li>
+            <li><a href="#projects">项目</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>你好，我是 <span class="highlight">用户名</span></h1>
+            <p class="subtitle">全栈开发者 | 开源爱好者</p>
+            <a href="#projects" class="cta-button">查看项目</a>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="about">
+        <h2>关于我</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>这里是一段简单的自我介绍。我是一名热爱编程的开发者，专注于 Web 开发和技术分享。</p>
+                <p>擅长技术：HTML, CSS, JavaScript, React, Vue, Node.js</p>
+            </div>
+            <div class="skills">
+                <h3>技能</h3>
+                <div class="skill-item">
+                    <span>HTML/CSS</span>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>JavaScript</span>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>React</span>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目展示 -->
+    <section id="projects" class="projects">
+        <h2>我的项目</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>项目一</h3>
+                <p>这是一个示例项目的描述。使用了现代前端技术栈。</p>
+                <div class="project-tags">
+                    <span>React</span>
+                    <span>Node.js</span>
+                </div>
+                <a href="#" class="project-link">查看详情</a>
+            </div>
+            <div class="project-card">
+                <h3>项目二</h3>
+                <p>另一个示例项目的描述。全栈开发实践。</p>
+                <div class="project-tags">
+                    <span>Vue</span>
+                    <span>Express</span>
+                </div>
+                <a href="#" class="project-link">查看详情</a>
+            </div>
+            <div class="project-card">
+                <h3>项目三</h3>
+                <p>开源工具项目。帮助开发者提高效率。</p>
+                <div class="project-tags">
+                    <span>Python</span>
+                    <span>CLI</span>
+                </div>
+                <a href="#" class="project-link">查看详情</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="contact">
+        <h2>联系我</h2>
+        <div class="contact-content">
+            <p>如果你对我的项目感兴趣，或者想合作，欢迎联系我！</p>
+            <div class="contact-links">
+                <a href="mailto:your-email@example.com" class="contact-button">📧 发送邮件</a>
+                <a href="https://github.com/your-username" target="_blank" class="contact-button">🐙 GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>&copy; 2024 个人网站. 使用 ❤️ 和代码构建.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

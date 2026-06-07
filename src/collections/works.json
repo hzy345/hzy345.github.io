@@ -1,0 +1,40 @@
+[
+	{
+		"name": "Project 1",
+		"description": "A cool project you've built",
+		"tags": ["Web", "JavaScript", "Project"],
+		"image": "/assets/works/project1.jpg",
+		"video": "/assets/works/project1.mp4",
+		"url": "#",
+		"isShow": true
+	},
+	{
+		"name": "Project 2",
+		"description": "Another awesome project",
+		"tags": ["React", "Node.js", "Full Stack"],
+		"image": "/assets/works/project2.jpg",
+		"video": "/assets/works/project2.mp4",
+		"url": "#"
+	},
+	{
+		"name": "Project 3",
+		"description": "Mobile app or tool",
+		"tags": ["Mobile", "App", "UI/UX"],
+		"image": "/assets/works/project3.jpg",
+		"url": "#"
+	},
+	{
+		"name": "Project 4",
+		"description": "Open source contribution",
+		"tags": ["Open Source", "Community", "GitHub"],
+		"image": "/assets/works/project4.jpg",
+		"url": "#"
+	},
+	{
+		"name": "Project 5",
+		"description": "Design or creative project",
+		"tags": ["Design", "Creative", "Visual"],
+		"image": "/assets/works/project5.jpg",
+		"url": "#"
+	}
+]
