@@ -1,12 +1,12 @@
 {
-	"name": "astro-rico-portfolio",
+	"name": "hzy345-lab-notes",
 	"type": "module",
 	"version": "1.0.0",
-	"description": "A modern, high-performance portfolio website template for designers built with Astro. Features retro blue theme, dark mode, and beautiful animations.",
+	"description": "余泓震的机器人研究、嵌入式开发与工程日志。",
 	"keywords": [
 		"astro",
-		"portfolio",
-		"designer",
+		"robotics",
+		"engineering",
 		"website",
 		"template",
 		"tailwindcss",
@@ -15,18 +15,17 @@
 		"responsive"
 	],
 	"author": {
-		"name": "Ricoui",
-		"email": "hello@ricoui.com",
-		"url": "https://ricoui.com"
+		"name": "余泓震",
+		"url": "https://github.com/hzy345"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ricocc/ricoui-portfolio.git"
+		"url": "https://github.com/hzy345/hzy345.github.io.git"
 	},
 	"bugs": {
-		"url": "https://github.com/ricocc/ricoui-portfolio/issues"
+		"url": "https://github.com/hzy345/hzy345.github.io/issues"
 	},
-	"homepage": "https://github.com/ricocc/ricoui-portfolio#readme",
+	"homepage": "https://hzy345.github.io/",
 	"license": "Apache-2.0",
 	"scripts": {
 		"dev": "astro dev",

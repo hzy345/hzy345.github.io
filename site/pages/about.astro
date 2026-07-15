@@ -1,0 +1,55 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { profile } from "@/config/profile.js";
+---
+
+<Layout title="关于" description="关于余泓震：武汉大学机器人工程专业学生，关注机器人、控制、嵌入式与工程实践。">
+  <header class="page-intro shell">
+    <p class="eyebrow">About</p>
+    <h1>比起一串标签，<br />我更愿意用做过的事介绍自己。</h1>
+  </header>
+  <section class="section">
+    <div class="shell about-grid">
+      <aside class="about-aside">
+        <div class="portrait-placeholder" aria-label="个人照片待补"><span>YHZ</span></div>
+        <p><strong>余泓震</strong><br /><span class="muted">武汉大学 · 机器人工程</span></p>
+        <div class="hero-actions"><a class="button" href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a><a class="button" href="#contact">联系我</a></div>
+      </aside>
+      <div class="about-content">
+        <section>
+          <h2>我在做什么</h2>
+          <p>我目前就读于武汉大学机器人学院，关注机器人的机构、运动规划、控制与智能交互。相比只停留在仿真或概念，我更享受把机械结构、嵌入式硬件与代码真正接到一起，让一个系统能够稳定地动起来。</p>
+          <p>我做过连续体机器人、人形机器人、机器狗语音智能体、ESP32 机械臂和仿生扑翼装置，也参加过限时黑客松。这个网站用来保存这些项目背后的决策、失败、协作与复盘。</p>
+        </section>
+        <section>
+          <h2>经历节点</h2>
+          <div class="timeline">
+            <div class="timeline-item"><time>2025.08 - 2026.07</time><div><h3>FTL 连续体机器人 · 项目学生负责人</h3><p>结构优化、运动学建模、路径规划、电机控制与实验验证。</p></div></div>
+            <div class="timeline-item"><time>2025.07 - 至今</time><div><h3>天问人形机器人 · 核心开发者</h3><p>参与强化学习训练、动捕映射与真实机器人动作任务。</p></div></div>
+            <div class="timeline-item"><time>2025</time><div><h3>武汉大学创新发明与技术实践协会 · 会长</h3><p>组织嵌入式开源项目教学与开发活动，统筹团队与社群协作。</p></div></div>
+            <div class="timeline-item"><time>2024.09 - 至今</time><div><h3>武汉大学 · 机器人工程本科</h3><p>学习机器人学、自动控制、微机原理、机械设计与制造等课程。</p></div></div>
+          </div>
+        </section>
+        <section>
+          <h2>工具箱</h2>
+          <div class="skill-cloud"><span>Python</span><span>C / C++</span><span>MATLAB</span><span>ROS2</span><span>IsaacLab</span><span>MuJoCo</span><span>SolidWorks</span><span>ESP32</span><span>树莓派</span><span>EDA / PCB</span><span>3D 打印</span><span>LaTeX</span></div>
+        </section>
+        <section>
+          <h2>一些结果</h2>
+          <ul class="fact-list">
+            <li>国家奖学金、武汉大学甲等奖学金、武汉大学三好学生（2025）</li>
+            <li>全国大学生数学竞赛湖北赛区二等奖（2025）</li>
+            <li>中国大学生计算机设计大赛华中赛区三等奖（2025）</li>
+            <li>蓝桥杯 C/C++ 湖北赛区三等奖、全国大学生数学建模竞赛湖北赛区三等奖（2025）</li>
+            <li>学生第一发明人申请连续体机器人路径规划相关国家发明专利，实质审查中</li>
+          </ul>
+        </section>
+        <section id="contact">
+          <h2>联系</h2>
+          <p>目前优先通过 GitHub 联系。公开邮箱、简历下载和其他平台链接会在确认隐私范围后补充。</p>
+          <a class="text-link" href={profile.github} target="_blank" rel="noreferrer">github.com/hzy345 <b>↗</b></a>
+        </section>
+      </div>
+    </div>
+  </section>
+</Layout>

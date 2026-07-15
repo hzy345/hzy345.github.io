@@ -1,0 +1,55 @@
+---
+import { profile } from "@/config/profile.js";
+const path = Astro.url.pathname;
+const links = [
+  { href: "/", label: "首页" },
+  { href: "/blog", label: "文章" },
+  { href: "/projects", label: "项目" },
+  { href: "/about", label: "关于" },
+];
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="wordmark" href="/" aria-label="返回首页">
+      <span class="wordmark-mark">Y</span>
+      <span>{profile.shortTitle}</span>
+    </a>
+    <nav class="desktop-nav" aria-label="主导航">
+      {links.map((link) => (
+        <a class:list={["nav-link", path === link.href || (link.href !== "/" && path.startsWith(link.href)) ? "active" : ""]} href={link.href}>
+          {link.label}
+        </a>
+      ))}
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="theme-toggle" type="button" aria-label="切换深色模式">
+        <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"></path></svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path></svg>
+      </button>
+      <button class="menu-button" id="menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="移动端导航">
+    {links.map((link) => <a href={link.href}>{link.label}</a>)}
+  </nav>
+</header>
+
+<script>
+  const root = document.documentElement;
+  const themeToggle = document.querySelector('#theme-toggle');
+  const menuToggle = document.querySelector('#menu-toggle');
+  const mobileNav = document.querySelector('#mobile-nav');
+  const storedTheme = localStorage.getItem('theme');
+  if (storedTheme === 'dark' || (!storedTheme && matchMedia('(prefers-color-scheme: dark)').matches)) root.classList.add('dark');
+  themeToggle?.addEventListener('click', () => {
+    root.classList.toggle('dark');
+    localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+  });
+  menuToggle?.addEventListener('click', () => {
+    const open = mobileNav?.classList.toggle('open') ?? false;
+    menuToggle.setAttribute('aria-expanded', String(open));
+  });
+</script>

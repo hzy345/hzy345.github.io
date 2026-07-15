@@ -1,0 +1,19 @@
+---
+const { project, compact = false } = Astro.props;
+---
+
+<article class:list={["project-card", `tone-${project.color}`, compact ? "compact" : ""]}>
+  <a class="project-card-link" href={`/projects/${project.slug}`} aria-label={`查看项目：${project.title}`}></a>
+  <div class="project-visual" aria-hidden="true">
+    <span class="project-number">{project.number}</span>
+    <div class="project-orbit"><span></span><i></i></div>
+    <span class="project-visual-label">{project.category}</span>
+  </div>
+  <div class="project-body">
+    <div class="project-meta"><span>{project.category}</span><span>{project.period}</span></div>
+    <h3>{project.shortTitle}</h3>
+    <p>{project.summary}</p>
+    <div class="tag-list">{project.stack.slice(0, compact ? 3 : 4).map((tag: string) => <span>{tag}</span>)}</div>
+    <span class="text-link">查看项目档案 <b>↗</b></span>
+  </div>
+</article>

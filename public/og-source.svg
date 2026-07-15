@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f5ef"/>
+  <g opacity=".45" stroke="#c7cec5"><path d="M0 70h1200M0 140h1200M0 210h1200M0 280h1200M0 350h1200M0 420h1200M0 490h1200M0 560h1200"/><path d="M70 0v630M140 0v630M210 0v630M280 0v630M350 0v630M420 0v630M490 0v630M560 0v630M630 0v630M700 0v630M770 0v630M840 0v630M910 0v630M980 0v630M1050 0v630M1120 0v630"/></g>
+  <rect x="60" y="52" width="1080" height="526" rx="34" fill="#112a62"/>
+  <text x="108" y="118" fill="#9fb5e8" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18" font-weight="700" letter-spacing="4">YHZ / LAB NOTES</text>
+  <text x="108" y="250" fill="white" font-family="Microsoft YaHei, Arial, sans-serif" font-size="64" font-weight="700">在机械、代码与智能之间</text>
+  <text x="108" y="338" fill="#c8ff3d" font-family="Microsoft YaHei, Arial, sans-serif" font-size="78" font-weight="800">做会动的东西。</text>
+  <text x="108" y="430" fill="#c9d5ed" font-family="Microsoft YaHei, Arial, sans-serif" font-size="28">余泓震的机器人研究与工程日志</text>
+  <g transform="translate(925 312)" fill="none" stroke="#8eabed" stroke-width="2"><circle r="126"/><circle r="84"/><circle r="42"/><path d="M-126 0h252M0-126v252"/><path d="M0 0l78 50" stroke="#c8ff3d" stroke-width="4"/><circle cx="78" cy="-50" r="12" fill="#c8ff3d" stroke="none"/></g>
+  <text x="108" y="525" fill="#9fb5e8" font-family="Arial, sans-serif" font-size="17" letter-spacing="2">ROBOTICS · EMBEDDED SYSTEMS · FIELD NOTES</text>
+</svg>

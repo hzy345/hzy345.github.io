@@ -12,6 +12,7 @@ const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://hzy345.github.io/';
 
 // https://astro.build/config
 export default defineConfig({
+  srcDir: './site',
   site: siteUrl,
   base: '/',
   envPrefix: 'PUBLIC_',
@@ -19,7 +20,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, './src')
+        '@': path.resolve(__dirname, './site')
       }
     }
   },
