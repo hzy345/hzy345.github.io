@@ -5,7 +5,17 @@ import { projects } from "@/data/projects.js";
 export function getStaticPaths() {
   return projects.map((project) => ({ params: { slug: project.slug }, props: { project } }));
 }
+type ProjectMedia = {
+  type?: "image" | "video";
+  src: string;
+  alt: string;
+  caption: string;
+  position?: string;
+  fit?: string;
+  poster?: string;
+};
 const { project } = Astro.props;
+const media = (project.media ?? []) as ProjectMedia[];
 ---
 
 <Layout title={project.title} description={project.summary}>
@@ -26,11 +36,15 @@ const { project } = Astro.props;
     </div>
   </header>
   <div class="shell">
-    {project.media?.length ? (
-      <div class:list={["project-media-grid", project.media.length > 1 ? "has-multiple" : "single"]}>
-        {project.media.map((item: { src: string; alt: string; caption: string; position?: string; fit?: string }) => (
-          <figure class:list={[item.fit === "contain" ? "is-contain" : ""]}>
-            <img src={item.src} alt={item.alt} loading="eager" decoding="async" style={`object-position: ${item.position || "center"}`} />
+    {media.length ? (
+      <div class:list={["project-media-grid", media.length > 1 ? "has-multiple" : "single"]}>
+        {media.map((item) => (
+          <figure class:list={[item.fit === "contain" ? "is-contain" : "", item.type === "video" ? "has-video" : ""]}>
+            {item.type === "video" ? (
+              <video src={item.src} poster={item.poster} controls preload="metadata" playsinline aria-label={item.alt}></video>
+            ) : (
+              <img src={item.src} alt={item.alt} loading="eager" decoding="async" style={`object-position: ${item.position || "center"}`} />
+            )}
             <figcaption>{item.caption}</figcaption>
           </figure>
         ))}
@@ -51,7 +65,7 @@ const { project } = Astro.props;
         {project.links?.length && (
           <div class="story-block"><h3>代码与延伸阅读</h3><div class="source-links">{project.links.map((link) => <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined}>{link.label} <span>↗</span></a>)}</div></div>
         )}
-        {!project.media?.length && <div class="placeholder-box">仍待补充：项目实拍、演示视频或系统架构图。当前档案仅使用已经核实的代码与文字信息。</div>}
+        {!media.length && <div class="placeholder-box">仍待补充：项目实拍、演示视频或系统架构图。当前档案仅使用已经核实的代码与文字信息。</div>}
       </div>
     </div>
   </section>
