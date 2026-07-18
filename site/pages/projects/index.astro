@@ -6,14 +6,14 @@ import { projects } from "@/data/projects.js";
 
 <Layout title="项目" description="余泓震的机器人、嵌入式与团队项目档案。">
   <header class="page-intro shell">
-    <p class="eyebrow">Project Archive · 6</p>
+    <p class="eyebrow">Project Archive · {projects.length}</p>
     <h1>项目不是结果墙，<br />而是问题如何被解决。</h1>
-    <p class="lead">从连续体机器人与人形机器人，到机器狗、机械臂、仿生扑翼和一次黑客松。这里保留每个项目的角色、方法、证据和下一步。</p>
+    <p class="lead">从机器人系统和嵌入式训练，到微信小程序与数学建模。这里保留每个项目的角色、方法、代码证据和仍待补充的信息。</p>
   </header>
   <section class="section">
     <div class="shell">
       <div class="filter-row" aria-label="项目分类概览">
-        <span class="filter-chip">6 个项目</span><span class="filter-chip">机器人研究</span><span class="filter-chip">嵌入式</span><span class="filter-chip">团队项目</span>
+        <span class="filter-chip">{projects.length} 个项目</span><span class="filter-chip">机器人研究</span><span class="filter-chip">嵌入式训练</span><span class="filter-chip">团队项目</span><span class="filter-chip">数学建模</span>
       </div>
       <div class="project-grid">{projects.map((project) => <ProjectCard project={project} />)}</div>
     </div>

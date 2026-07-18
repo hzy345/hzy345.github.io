@@ -1,12 +1,14 @@
 ---
 const { project, compact = false } = Astro.props;
+const cover = project.media?.[0];
 ---
 
 <article class:list={["project-card", `tone-${project.color}`, compact ? "compact" : ""]}>
   <a class="project-card-link" href={`/projects/${project.slug}`} aria-label={`查看项目：${project.title}`}></a>
-  <div class="project-visual" aria-hidden="true">
+  <div class:list={["project-visual", cover ? "has-image" : ""]}>
+    {cover && <img src={cover.src} alt={cover.alt} loading="lazy" decoding="async" style={`object-position: ${cover.position || "center"}`} />}
     <span class="project-number">{project.number}</span>
-    <div class="project-orbit"><span></span><i></i></div>
+    {!cover && <div class="project-orbit" aria-hidden="true"><span></span><i></i></div>}
     <span class="project-visual-label">{project.category}</span>
   </div>
   <div class="project-body">

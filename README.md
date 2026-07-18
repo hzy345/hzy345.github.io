@@ -6,7 +6,7 @@
 
 - 首页：个人定位、精选项目、最近文章与当前进展
 - 文章：项目记录、技术笔记、学习思考和随笔
-- 项目：连续体机器人、人形机器人、机器狗、机械臂、仿生扑翼和黑客松项目
+- 项目：9 个机器人、嵌入式、微信小程序与数学建模项目档案
 - 关于：教育背景、经历节点、工具栈、成果与联系方式
 
 ## 技术栈
@@ -32,7 +32,7 @@ pnpm build
 ## 添加内容
 
 - 个人信息：`site/config/profile.js`
-- 项目数据：`src/data/projects.js`
+- 项目数据：`site/data/projects-content.js`
 - 博客文章：`site/content/post/*.mdx`
 - 全局样式：`site/styles/global.css`
 

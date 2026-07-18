@@ -1,1 +1,1 @@
-export { projects, featuredProjects, getProject } from "../../src/data/projects.js";
+export { projects, featuredProjects, getProject } from "./projects-content.js";
