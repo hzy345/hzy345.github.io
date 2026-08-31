@@ -22,8 +22,8 @@ export const profile = {
   affiliation: "武汉大学 · 机器人工程",
   roles: [
     { title: "机器人工程", org: "武汉大学" },
-    { title: "连续体机器人 · 负责人", org: "FTL 项目" },
-    { title: "人形机器人 · 核心开发者", org: "天问队" },
+    { title: "连续体机器人", org: "FTL 特性" },
+    { title: "Locomotion", org: "人形机器人" },
   ],
   // 联系方式入口
   socials: [
