@@ -363,11 +363,6 @@ section.block.soft { background: var(--bg-soft); border-top: 1px solid var(--lin
 .about-content h2 { margin: 0 0 16px; font-size: 26px; font-weight: 600; letter-spacing: -.02em; }
 .about-content p { color: var(--ink-soft); }
 
-/* ============ REVEAL (no-op: keep content always visible for a simple static page) ============ */
-.reveal { opacity: 1; transform: none; transition: none; }
-.reveal-visible { opacity: 1; transform: none; }
-.reveal-d1, .reveal-d2, .reveal-d3 { transition-delay: 0s; }
-
 /* ============ RESPONSIVE ============ */
 @media (max-width: 960px) {
   .intro-grid { grid-template-columns: minmax(0, 1fr) minmax(220px, 40%); }
@@ -397,9 +392,4 @@ section.block.soft { background: var(--bg-soft); border-top: 1px solid var(--lin
   .timeline-item { grid-template-columns: 1fr; gap: 4px; }
   .contact-card { padding: 34px 22px; }
   .footer-row { flex-direction: column; align-items: flex-start; }
-}
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
