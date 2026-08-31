@@ -15,7 +15,7 @@ const hrefFor = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a class="nav-logo" href={isHome ? "#about" : "/#about"}>
-      {profile.author}<span class="cn">&nbsp;/ {profile.handle}</span>
+      {profile.author}<span class="cn">&nbsp;/ {profile.name_en}</span>
     </a>
     <nav class="nav-links" aria-label="主导航">
       {links.map((link) => (
