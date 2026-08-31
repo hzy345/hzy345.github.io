@@ -2,7 +2,18 @@
 import Layout from "@/layouts/Layout.astro";
 ---
 <Layout title="页面未找到">
-  <section class="page-intro narrow" style="min-height: 60vh; display: grid; align-content: center;">
-    <p class="eyebrow">404 / Signal Lost</p><h1>这条路径还没有记录。</h1><p class="lead">可能是链接发生了变化，也可能这篇内容仍在整理中。</p><div class="hero-actions"><a class="button primary" href="/">返回首页</a><a class="button" href="/projects">浏览项目</a></div>
+  <section class="block">
+    <div class="wrap contact-block" style="min-height: 60vh; display: grid; align-content: center;">
+      <div class="contact-card" style="text-align: center;">
+        <p class="eyebrow">404 / Signal Lost</p>
+        <h2>这条路径还没有记录。</h2>
+        <p>可能是链接发生了变化，也可能这篇内容仍在整理中。回到首页继续浏览吧。</p>
+        <div class="contact-actions">
+          <a class="contact-btn primary" href="/">返回首页</a>
+          <a class="contact-btn" href="/#projects">浏览项目</a>
+          <a class="contact-btn" href="/#blog">阅读文章</a>
+        </div>
+      </div>
+    </div>
   </section>
 </Layout>

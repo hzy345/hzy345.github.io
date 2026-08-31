@@ -1,21 +1,29 @@
 ---
-const { project, compact = false } = Astro.props;
+const { project } = Astro.props;
 const cover = project.media?.[0];
+const toneColor: Record<string, string> = {
+  blue: "#174eed", violet: "#6046c8", orange: "#da632d", cyan: "#087e91",
+  pink: "#a53c76", green: "#36724d", teal: "#0f766e", amber: "#9a6700",
+  indigo: "#3730a3",
+};
+const bg = toneColor[project.color] || "#174eed";
 ---
 
-<article class:list={["project-card", `tone-${project.color}`, compact ? "compact" : ""]}>
-  <a class="project-card-link" href={`/projects/${project.slug}`} aria-label={`查看项目：${project.title}`}></a>
-  <div class:list={["project-visual", cover ? "has-image" : ""]}>
-    {cover && <img src={cover.src} alt={cover.alt} loading="lazy" decoding="async" style={`object-position: ${cover.position || "center"}`} />}
-    <span class="project-number">{project.number}</span>
-    {!cover && <div class="project-orbit" aria-hidden="true"><span></span><i></i></div>}
-    <span class="project-visual-label">{project.category}</span>
-  </div>
-  <div class="project-body">
-    <div class="project-meta"><span>{project.category}</span><span>{project.period}</span></div>
+<article class="project-card">
+  <a class="project-card-media" href={`/projects/${project.slug}`} aria-label={`查看项目：${project.title}`}>
+    {cover ? (
+      <img src={cover.src} alt={cover.alt} loading="lazy" decoding="async" style={`object-position: ${cover.position || "center"}`} />
+    ) : (
+      <div class="tone-fallback" aria-hidden="true" style={`background: ${bg}`}>{project.shortTitle.slice(0, 1)}</div>
+    )}
+    <span class="project-no">{project.number}</span>
+    <span class="project-cat">{project.category}</span>
+  </a>
+  <div class="project-card-body">
+    <div class="project-card-meta"><span>{project.period}</span><span>{project.status}</span></div>
     <h3>{project.shortTitle}</h3>
     <p>{project.summary}</p>
-    <div class="tag-list">{project.stack.slice(0, compact ? 3 : 4).map((tag: string) => <span>{tag}</span>)}</div>
-    <span class="text-link">查看项目档案 <b>↗</b></span>
+    <div class="project-card-tags">{project.stack.slice(0, 4).map((tag: string) => <span>{tag}</span>)}</div>
+    <a class="project-card-link" href={`/projects/${project.slug}`}>查看项目档案 ↗</a>
   </div>
 </article>

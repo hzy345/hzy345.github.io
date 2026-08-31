@@ -3,19 +3,18 @@ import { profile } from "@/config/profile.js";
 ---
 
 <footer class="site-footer">
-  <div class="shell footer-grid">
-    <div>
-      <p class="footer-title">把过程留下来。</p>
-      <p class="muted">研究、动手、失败、再试一次。</p>
+  <div class="wrap footer-row">
+    <div class="footer-brand">
+      <strong>{profile.author}</strong> · {profile.affiliation}，记录机器人研究、嵌入式开发与工程实践。
     </div>
     <div class="footer-links">
       <a href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a>
       <a href="/rss.xml">RSS</a>
-      <a href="/about#contact">联系</a>
+      <a href="/#contact">联系</a>
     </div>
   </div>
-  <div class="shell footer-bottom">
-    <span>© {new Date().getFullYear()} {profile.author}</span>
-    <span>Built with Astro · 基于 Rico Portfolio 模板重构</span>
+  <div class="wrap footer-row" style="margin-top: 20px">
+    <span class="footer-brand">© {new Date().getFullYear()} {profile.author}</span>
+    <span class="footer-brand">Built with Astro · 基于 Rico Portfolio 模板重构</span>
   </div>
 </footer>

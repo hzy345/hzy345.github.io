@@ -19,25 +19,19 @@ const media = (project.media ?? []) as ProjectMedia[];
 ---
 
 <Layout title={project.title} description={project.summary}>
-  <header class="project-detail-hero">
-    <div class="shell project-detail-grid">
-      <div>
-        <p class="eyebrow">{project.number} / {project.category}</p>
-        <h1>{project.title}</h1>
-        <p class="lead">{project.summary}</p>
-      </div>
-      <aside class="fact-panel">
-        <dl>
-          <div><dt>周期</dt><dd>{project.period}</dd></div>
-          <div><dt>身份</dt><dd>{project.status}</dd></div>
-          <div><dt>负责</dt><dd>{project.role}</dd></div>
-        </dl>
-      </aside>
+  <header class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href="/#projects">← 返回项目档案</a>
+      <p class="eyebrow">{project.number} / {project.category}</p>
+      <h1>{project.title}</h1>
+      <p class="lead">{project.summary}</p>
+      <div class="page-meta"><span>周期：{project.period}</span><span>身份：{project.status}</span><span>负责：{project.role}</span></div>
     </div>
   </header>
-  <div class="shell">
+
+  <div class="wrap">
     {media.length ? (
-      <div class:list={["project-media-grid", media.length > 1 ? "has-multiple" : "single"]}>
+      <div class:list={["pd-media", media.length > 1 ? "has-multiple" : "single"]}>
         {media.map((item) => (
           <figure class:list={[item.fit === "contain" ? "is-contain" : "", item.type === "video" ? "has-video" : ""]}>
             {item.type === "video" ? (
@@ -50,22 +44,21 @@ const media = (project.media ?? []) as ProjectMedia[];
         ))}
       </div>
     ) : (
-      <div class:list={["project-banner", `tone-${project.color}`]}>
-        <div class="project-orbit" aria-hidden="true"><span></span><i></i></div>
-      </div>
+      <div class="placeholder-box">仍待补充：项目实拍、演示视频或系统架构图。当前档案仅使用已经核实的代码与文字信息。</div>
     )}
   </div>
-  <section class="section">
-    <div class="shell project-story">
+
+  <section class="block">
+    <div class="wrap pd-story">
       <h2>项目档案</h2>
       <div>
         <div class="story-block"><h3>我做了什么</h3><ul class="fact-list">{project.facts.map((fact) => <li>{fact}</li>)}</ul></div>
         <div class="story-block"><h3>过程与复盘</h3><p>{project.story}</p></div>
-        <div class="story-block"><h3>技术与工具</h3><div class="tag-list">{project.stack.map((tag) => <span>{tag}</span>)}</div></div>
+        <div class="story-block"><h3>技术与工具</h3><div class="tool-cloud">{project.stack.map((tag) => <span>{tag}</span>)}</div></div>
         {project.links?.length && (
-          <div class="story-block"><h3>代码与延伸阅读</h3><div class="source-links">{project.links.map((link) => <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined}>{link.label} <span>↗</span></a>)}</div></div>
+          <div class="story-block"><h3>代码与延伸阅读</h3><div class="source-links">{project.links.map((link) => <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined}>{link.label} ↗</a>)}</div></div>
         )}
-        {!media.length && <div class="placeholder-box">仍待补充：项目实拍、演示视频或系统架构图。当前档案仅使用已经核实的代码与文字信息。</div>}
+        <div class="story-block"><a class="back-link" href="/#projects">← 返回项目档案</a></div>
       </div>
     </div>
   </section>
