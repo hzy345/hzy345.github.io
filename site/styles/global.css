@@ -184,7 +184,7 @@ button, summary { font: inherit; }
           mask-composite: exclude;
   opacity: 0; transition: opacity .5s var(--ease); pointer-events: none;
 }
-.intro-portrait:hover img { transform: scale(1.05); }
+.intro-portrait:hover img { transform: scale(1.08); }
 .intro-portrait:hover::before { opacity: 1; }
 .intro-side-caption { font-size: 12.5px; color: var(--ink-faint); line-height: 1.6; padding: 0 4px; }
 
