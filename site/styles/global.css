@@ -129,7 +129,7 @@ button, summary { font: inherit; }
 }
 .intro-grid {
   position: relative; z-index: 1;
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 34%);
+  display: grid; grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
   gap: 28px 40px; align-items: start;
 }
 .intro-copy { display: flex; flex-direction: column; min-width: 0; }
@@ -363,9 +363,14 @@ section.block.soft { background: var(--bg-soft); border-top: 1px solid var(--lin
 .about-content h2 { margin: 0 0 16px; font-size: 26px; font-weight: 600; letter-spacing: -.02em; }
 .about-content p { color: var(--ink-soft); }
 
+/* ============ REVEAL (no-op: keep content always visible for a simple static page) ============ */
+.reveal { opacity: 1; transform: none; transition: none; }
+.reveal-visible { opacity: 1; transform: none; }
+.reveal-d1, .reveal-d2, .reveal-d3 { transition-delay: 0s; }
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 960px) {
-  .intro-grid { grid-template-columns: minmax(0, 1fr) minmax(220px, 40%); }
+  .intro-grid { grid-template-columns: minmax(220px, 40%) minmax(0, 1fr); }
   .projects-grid, .honors-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pd-grid { grid-template-columns: 1fr; gap: 28px; }
   .about-grid { grid-template-columns: 1fr; gap: 32px; }
