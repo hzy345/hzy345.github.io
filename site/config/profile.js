@@ -18,7 +18,7 @@ export const profile = {
   background: "/background.webp",
   backgroundAlt: "/background-2.webp",
   // 一句话定位 / 身份（首页 Hero）
-  lead: "在机械、代码与智能之间，做会动的东西。",
+  lead: "人因梦想而伟大",
   affiliation: "武汉大学 · 机器人工程",
   roles: [
     { title: "机器人工程", org: "武汉大学" },
