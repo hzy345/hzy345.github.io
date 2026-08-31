@@ -4,7 +4,7 @@ export const profile = {
   title: "余泓震的工程日志",
   shortTitle: "YHZ / LAB NOTES",
   author: "余泓震",
-  name_en: "Hzy345",
+  name_en: "Hongzhen Yu",
   handle: "Hzy345",
   url: SITE_URL,
   mail: "",
@@ -22,7 +22,7 @@ export const profile = {
   affiliation: "武汉大学 · 机器人工程",
   roles: [
     { title: "机器人工程", org: "武汉大学" },
-    { title: "连续体机器人", org: "FTL 特性" },
+    { title: "FTL 特性", org: "连续体机器人" },
     { title: "Locomotion", org: "人形机器人" },
   ],
   // 联系方式入口
