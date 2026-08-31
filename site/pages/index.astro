@@ -33,6 +33,10 @@ const timeline = [
     <div class="intro-bg" aria-hidden="true"><img src={profile.background} alt="" /></div>
     <div class="wrap">
       <div class="intro-grid">
+        <div class="intro-side reveal reveal-d2">
+          <div class="intro-portrait"><img src={profile.portrait} alt={`${profile.author} 的个人肖像`} loading="eager" decoding="async" /></div>
+          <p class="intro-side-caption">{profile.affiliation} · 机器人工程 / 嵌入式 / 工程日志</p>
+        </div>
         <div class="intro-copy">
           <div class="reveal reveal-d1">
             <p class="eyebrow">{profile.affiliation}</p>
@@ -61,10 +65,6 @@ const timeline = [
               阅读日志
             </a>
           </div>
-        </div>
-        <div class="intro-side reveal reveal-d2">
-          <div class="intro-portrait"><img src={profile.portrait} alt={`${profile.author} 的个人肖像`} loading="eager" decoding="async" /></div>
-          <p class="intro-side-caption">{profile.affiliation} · 机器人工程 / 嵌入式 / 工程日志</p>
         </div>
       </div>
     </div>
