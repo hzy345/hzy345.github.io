@@ -1,6 +1,6 @@
-export const projects = [
+const rawProjects = [
   {
-    slug: "continuum-robot-ftl", number: "01", title: "具备跟随领导者特性的连续体机器人", shortTitle: "FTL 连续体机器人",
+    slug: "continuum-robot-ftl", date: "2025.08", pinned: true, title: "具备跟随领导者特性的连续体机器人", shortTitle: "FTL 连续体机器人",
     category: "科研项目", period: "2025.08 - 2026.07", status: "项目学生负责人",
     summary: "围绕可变刚度连续体机器人的嵌套关节结构、运动学建模、约束采样路径规划与实验控制展开研究。",
     role: "结构优化、运动学建模、轨迹规划、电机控制与实验验证",
@@ -10,7 +10,7 @@ export const projects = [
     media: [{ src: "/projects/continuum-robot-lab.jpg", alt: "余泓震在连续体机器人实验装置旁进行调试", caption: "连续体机器人实验环境与装置调试现场。", position: "center 48%" }],
   },
   {
-    slug: "tianwen-humanoid", number: "02", title: "天问人形机器人运动控制", shortTitle: "天问人形机器人",
+    slug: "tianwen-humanoid", date: "2025.07", pinned: true, title: "天问人形机器人运动控制", shortTitle: "天问人形机器人",
     category: "机器人系统", period: "2025.07 - 至今", status: "核心开发者",
     summary: "基于 IsaacLab、MuJoCo 与 ROS2，参与人形机器人的强化学习训练、上肢姿态跟随和运动任务验证。",
     role: "算法复现、训练调参、动捕映射、动作控制与现场验证",
@@ -25,8 +25,8 @@ export const projects = [
     ],
   },
   {
-    slug: "xiaomi-cyberdog-voice-agent", number: "03", title: "小米 CyberDog 语音智能体", shortTitle: "机器狗语音智能体",
-    category: "AI × 机器人", period: "时间待补", status: "系统集成项目",
+    slug: "xiaomi-cyberdog-voice-agent", date: "2025.12", title: "小米 CyberDog 语音智能体", shortTitle: "机器狗语音智能体",
+    category: "AI × 机器人", period: "2025.12", status: "系统集成项目",
     summary: "以 ROS2 串联语音识别、大语言模型、TTS、动作服务和 LED 情绪反馈，让机器狗能够听懂、回答并执行动作。",
     role: "对话流程、结构化指令解析、语音合成与动作映射",
     stack: ["Python", "ROS2", "LLM", "TTS", "CyberDog"], color: "orange", featured: true,
@@ -36,8 +36,8 @@ export const projects = [
     links: [{ label: "GitHub 源码", href: "https://github.com/hzy345/cyberdog-gpt" }, { label: "阅读项目日志", href: "/blog/cyberdog-voice-agent-notes" }],
   },
   {
-    slug: "esp32-dolphin-arm", number: "04", title: "ESP32 海豚机械臂", shortTitle: "海豚机械臂",
-    category: "嵌入式与创客", period: "时间待补", status: "开源项目二次开发",
+    slug: "esp32-dolphin-arm", date: "2025.12", title: "ESP32 海豚机械臂", shortTitle: "海豚机械臂",
+    category: "嵌入式与创客", period: "2025.12", status: "开源项目二次开发",
     summary: "围绕开源机械臂进行结构适配与 3D 模型优化，实现手机 App 经蓝牙控制机械臂运动。",
     role: "3D 建模优化、硬件装配、ESP32 与蓝牙控制调试",
     stack: ["ESP32", "Bluetooth", "SolidWorks", "3D 打印", "舵机"], color: "cyan", featured: false,
@@ -46,8 +46,8 @@ export const projects = [
     media: [{ src: "/projects/dolphin-arm-assembly.webp", alt: "ESP32 海豚机械臂的 SolidWorks 装配模型，标注 A、B、C 三个旋转轴与连杆、夹爪、旋转底座和固定底座", caption: "海豚机械臂的 SolidWorks 装配模型：A / B / C 三轴，BC、CD 连杆，旋转底座、固定底座与夹爪。", position: "center", fit: "contain" }],
   },
   {
-    slug: "bionic-butterfly", number: "05", title: "遥控仿生扑翼蝴蝶", shortTitle: "仿生扑翼蝴蝶",
-    category: "仿生机器人", period: "时间待补", status: "开源复刻与结构改造",
+    slug: "bionic-butterfly", date: "2025.12", title: "遥控仿生扑翼蝴蝶", shortTitle: "仿生扑翼蝴蝶",
+    category: "仿生机器人", period: "2025.12", status: "开源复刻与结构改造",
     summary: "参考 B 站 UP 主“一k菌”开源的仿生蝴蝶与扑翼机控制板完成复刻，并针对实际舵机和开发板重新优化机身结构。",
     role: "开源方案复刻、机身 3D 建模、器件适配、扑翼机构装配与遥控调试",
     stack: ["仿生设计", "扑翼机构", "RC 遥控", "3D 打印", "舵机"], color: "pink", featured: false,
@@ -60,7 +60,7 @@ export const projects = [
     ],
   },
   {
-    slug: "campus-cats-map", number: "06", title: "MeowPath 校园流浪猫地图", shortTitle: "MeowPath 校园猫地图",
+    slug: "campus-cats-map", date: "2026.05", title: "MeowPath 校园流浪猫地图", shortTitle: "MeowPath 校园猫地图",
     category: "黑客松团队项目", period: "2026", status: "抖音 AI 创变者计划 · 武汉大学站团队项目",
     summary: "面向武汉大学场景的原生微信小程序，用手绘地图、猫咪图鉴、组合搜索和互动社区组织校园流浪猫信息。",
     role: "微信小程序开发与产品实现（个人分工待补）",
@@ -77,7 +77,7 @@ export const projects = [
     links: [{ label: "GitHub 源码", href: "https://github.com/hzy345/MeowPath" }, { label: "阅读项目日志", href: "/blog/meowpath-campus-cat-map" }],
   },
   {
-    slug: "embedded-systems-training-log", number: "07", title: "嵌入式系统训练日志", shortTitle: "嵌入式训练日志",
+    slug: "embedded-systems-training-log", date: "2025.08", title: "嵌入式系统训练日志", shortTitle: "嵌入式训练日志",
     category: "学习与训练", period: "2025.08.07 - 2025.08.19", status: "阶段性学习记录",
     summary: "从 C 语言、内存和数据结构逐步进入 STM32F405 外设、定时器中断、PWM 与调试工具的一组连续训练。",
     role: "独立完成练习、工程配置、代码实现与调试记录",
@@ -97,7 +97,7 @@ export const projects = [
     ],
   },
   {
-    slug: "math-modeling", number: "08", title: "数学建模", shortTitle: "数学建模",
+    slug: "math-modeling", date: "2025.05", title: "数学建模", shortTitle: "数学建模",
     category: "数学建模", period: "2025.05 - 至今", status: "参赛记录持续更新",
     summary: "所有数学建模比赛与训练的汇总档案：按时间倒序记录每一次参赛的题目、方法、代码与结果，新的比赛会继续追加在这一栏。",
     role: "数据处理、评价建模、组合优化与光谱分析（团队具体分工待补）",
@@ -140,7 +140,7 @@ export const projects = [
     story: "数学建模是我持续参加的一类比赛，这一栏会长期维护：每次参赛的题目、方法、代码和结果都按时间倒序追加在上面。2025.09 的全国赛 B 题从红外干涉光谱反演碳化硅外延层厚度；2025.05 的校级选拔题从 35200 个景点的原始 CSV 出发完成评价与组合优化。未确认的团队分工不写成个人贡献。",
   },
   {
-    slug: "napcat-club-secretary", number: "09", title: "QQ 社团智能秘书", shortTitle: "社团智能秘书",
+    slug: "napcat-club-secretary", date: "2026.07", title: "QQ 社团智能秘书 Agent", shortTitle: "社团智能秘书 Agent",
     category: "AI Agent 与自动化", period: "2026.07 - 至今", status: "个人项目 · 社团与学校对接",
     summary: "用 NapCatQQ 接入 QQ 群消息、DeepSeek 做结构化抽取，把群里的通知变成带原文证据、需人工确认的任务候选，省掉为社团与学校对接反复翻聊天记录。",
     role: "独立完成：接入与适配、抽取管线、时间与置信度校验、持久化与管理 API",
@@ -158,7 +158,7 @@ export const projects = [
     links: [{ label: "GitHub 源码", href: "https://github.com/hzy345/NapCatQQ-club-secretary" }],
   },
   {
-    slug: "rebuild-z-vbot", number: "10", title: "Rebuild-Z 黑客松 · vbot 机器狗", shortTitle: "vbot 机器狗导航",
+    slug: "rebuild-z-vbot", date: "2026.09", title: "Rebuild-Z 黑客松 · vbot 机器狗", shortTitle: "vbot 机器狗导航",
     category: "黑客松团队项目", period: "2026.09", status: "Rebuild-Z × GEIA HACKATHON · 深圳",
     summary: "在 vbot 四足机器狗上打通 SLAM 建图与定位、路点导航，以及「拍张照片去找那个地方」的目标点搜索，并写了带路—等待—召回—迎接的陪伴任务状态机。",
     role: "机器狗软件：SLAM / 导航 / 路点与视觉检索、陪伴任务状态机、灵巧手视觉控制（团队分工待补）",
@@ -189,6 +189,14 @@ export const projects = [
     ],
   },
 ];
+
+// 首页/档案列表的展示顺序：pinned 项目固定在最前，其余按项目时间倒序
+const byPinnedThenDate = (a, b) =>
+  Number(b.pinned ?? false) - Number(a.pinned ?? false) || String(b.date).localeCompare(String(a.date));
+
+export const projects = [...rawProjects]
+  .sort(byPinnedThenDate)
+  .map((project, index) => ({ ...project, number: String(index + 1).padStart(2, "0") }));
 
 export const featuredProjects = projects.filter((project) => project.featured);
 export function getProject(slug) { return projects.find((project) => project.slug === slug); }
