@@ -467,3 +467,17 @@ section.block.soft { background: var(--bg-soft); border-top: 1px solid var(--lin
   .contact-card { padding: 34px 22px; }
   .footer-row { flex-direction: column; align-items: flex-start; }
 }
+
+/* ============ 左后卡：指向露出来的部分，缓慢移出到完整显示 ============
+   写在最后，保证在同样优先级下覆盖上面的"整叠悬停"规则（鼠标移到左卡露出的
+   边缘时，被正面卡压住的部分慢慢移出来，直到整张图都能看到）。
+   左侧留白（--fan-room）不够时按可用宽度移出，尽量多露，不会把卡片推出视口太多。 */
+.portrait-fan .fan-card--back:hover {
+  transform: translate(calc(-1 * min(100%, max(var(--fan-room), 65%))), -14px) rotate(-7deg);
+  transition: transform 1.35s cubic-bezier(.25, .8, .35, 1), box-shadow .4s var(--ease), filter .4s var(--ease);
+}
+@media (max-width: 720px) {
+  .portrait-fan .fan-card--back:hover {
+    transform: translate(calc(-1 * min(100%, max(var(--fan-room), 65%))), -14px) rotate(-6deg);
+  }
+}
