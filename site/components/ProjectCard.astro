@@ -1,6 +1,9 @@
 ---
 const { project } = Astro.props;
-const cover = project.media?.[0];
+// 项目可以只给 cover（用于「汇总型档案」，详情页的图放在各自的参赛记录里）
+const cover = project.cover
+  ? { src: project.cover, alt: project.coverAlt || project.title, position: project.coverPosition || "center" }
+  : project.media?.[0];
 const toneColor: Record<string, string> = {
   blue: "#174eed", violet: "#6046c8", orange: "#da632d", cyan: "#087e91",
   pink: "#a53c76", green: "#36724d", teal: "#0f766e", amber: "#9a6700",

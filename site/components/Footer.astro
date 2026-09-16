@@ -8,8 +8,8 @@ import { profile } from "@/config/profile.js";
       <strong>{profile.author}</strong> · {profile.affiliation}，记录机器人研究、嵌入式开发与工程实践。
     </div>
     <div class="footer-links">
+      <a href={`mailto:${profile.mail}`}>{profile.mail}</a>
       <a href={profile.github} target="_blank" rel="noreferrer">GitHub ↗</a>
-      <a href="/rss.xml">RSS</a>
       <a href="/#contact">联系</a>
     </div>
   </div>

@@ -167,13 +167,37 @@ button, summary { font: inherit; }
 }
 .intro-actions a:hover { color: var(--accent); text-decoration: none; }
 .intro-actions a svg { width: 17px; height: 17px; flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+/* 品牌图标（抖音 / 哔哩哔哩）用实心填充，和线性图标区分开 */
+.intro-actions a.is-brand svg { fill: currentColor; stroke: none; }
 .intro-actions a.is-round svg { border-radius: 50%; }
 .intro-actions a b { font-weight: 600; }
 
 .intro-side { display: flex; flex-direction: column; gap: 16px; align-self: start; }
-.intro-portrait {
-  width: 100%; aspect-ratio: 4 / 5; border-radius: 22px; overflow: hidden; position: relative;
+
+/* ---------- 人像：卡片堆叠展开（Stacked Card Fan） ---------- */
+.portrait-fan {
+  position: relative; width: 100%; aspect-ratio: 4 / 5;
+  /* 卡片左侧的可用宽度（版心左边距 + 视口留白），用来限制左卡移出的最大幅度 */
+  --fan-room: max(20px, calc((100vw - 1120px) / 2 + 28px));
+  border-radius: 22px; outline-offset: 8px;
+}
+.portrait-fan .fan-card {
+  position: absolute; inset: 0; border-radius: 22px; overflow: hidden;
   background: var(--bg-soft); box-shadow: 0 0 0 1px var(--line);
+  transform-origin: bottom center;
+  transition: transform .55s cubic-bezier(.175, .885, .32, 1.275), box-shadow .4s var(--ease), filter .4s var(--ease);
+}
+.portrait-fan .fan-card img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 16%; }
+/* 静止状态：后方卡片向左错开约 1/10 张卡，露出边缘，暗示是一叠 */
+.portrait-fan .fan-card--back { z-index: 1; transform: translate(-28px, 4px) rotate(-2deg); }
+.portrait-fan .fan-card--back img { filter: saturate(.82) brightness(.96); }
+
+.intro-portrait {
+  position: absolute; inset: 0; z-index: 3;
+  border-radius: 22px; overflow: hidden;
+  background: var(--bg-soft); box-shadow: 0 0 0 1px var(--line);
+  transform-origin: bottom center;
+  transition: transform .55s cubic-bezier(.175, .885, .32, 1.275), box-shadow .4s var(--ease);
 }
 .intro-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 16%; transition: transform .9s cubic-bezier(.45, 0, .55, 1); will-change: transform; }
 .intro-portrait::before {
@@ -186,6 +210,24 @@ button, summary { font: inherit; }
 }
 .intro-portrait:hover img { transform: scale(1.08); }
 .intro-portrait:hover::before { opacity: 1; }
+
+/* 悬停 / 键盘聚焦：后方卡片向左移出（约露出卡片面积的 2/5，其余压在正面卡下），
+   同时轻微旋转、上浮；正面卡片上浮，并保留原有的图片放大与渐变描边。
+   移出、上浮、放大都是同一段过渡动画 */
+.portrait-fan:hover .fan-card--back,
+.portrait-fan:focus-within .fan-card--back {
+  transform: translate(calc(-1 * min(32%, var(--fan-room))), -14px) rotate(-7deg);
+}
+.portrait-fan:hover .fan-card--front,
+.portrait-fan:focus-within .fan-card--front { transform: translateY(-20px); }
+.portrait-fan:hover .fan-card,
+.portrait-fan:focus-within .fan-card { box-shadow: 0 0 0 1px var(--line), var(--shadow-soft); }
+.portrait-fan:hover .fan-card--back img,
+.portrait-fan:focus-within .fan-card--back img { filter: saturate(1) brightness(1); }
+.portrait-fan:hover .intro-portrait img,
+.portrait-fan:focus-within .intro-portrait img { transform: scale(1.08); }
+.portrait-fan:hover .intro-portrait::before,
+.portrait-fan:focus-within .intro-portrait::before { opacity: 1; }
 .intro-side-caption { font-size: 12.5px; color: var(--ink-faint); line-height: 1.6; padding: 0 4px; }
 
 /* ============ SECTIONS ============ */
@@ -357,6 +399,27 @@ section.block.soft { background: var(--bg-soft); border-top: 1px solid var(--lin
 .source-links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 .placeholder-box { margin-top: 20px; padding: 18px; border: 1px dashed var(--line); border-radius: 14px; color: var(--ink-faint); background: var(--bg-soft); font-size: 13px; }
 
+/* ============ PROJECT RECORDS（汇总型档案 · 按时间倒序） ============ */
+.records { border-top: 1px solid var(--line); }
+.record {
+  display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px 32px;
+  padding: 30px 0; border-bottom: 1px solid var(--line-soft);
+}
+.record-meta { display: flex; flex-direction: column; gap: 6px; }
+.record-meta time { font-size: 15px; font-weight: 700; letter-spacing: .01em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.record-level { font-size: 12px; line-height: 1.55; color: var(--ink-faint); }
+.record-body { min-width: 0; }
+.record-body h3 { font-size: 19px; font-weight: 600; letter-spacing: -.01em; line-height: 1.4; }
+.record-role { margin-top: 8px; font-size: 12.5px; color: var(--ink-faint); }
+.record-summary { margin-top: 10px; color: var(--ink-soft); font-size: 14.5px; line-height: 1.75; }
+.record-facts { margin: 12px 0 0; padding: 0; list-style: none; }
+.record-facts li { position: relative; padding: 6px 0 6px 18px; color: var(--ink-soft); font-size: 13.5px; line-height: 1.7; }
+.record-facts li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.record-figure { margin: 18px 0 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-soft); }
+.record-figure img { display: block; width: 100%; height: 300px; object-fit: contain; background: var(--bg-soft-2); }
+.record-figure figcaption { padding: 11px 16px 13px; color: var(--ink-faint); font-size: 12px; line-height: 1.6; }
+.record-links { margin-top: 16px; }
+
 /* ============ TOOLBOX / ABOUT GRID ============ */
 .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .62fr); gap: 48px; align-items: start; }
 .about-content > section + section { margin-top: 52px; padding-top: 48px; border-top: 1px solid var(--line); }
@@ -385,6 +448,9 @@ section.block.soft { background: var(--bg-soft); border-top: 1px solid var(--lin
   .intro-roles { flex-direction: column; align-items: flex-start; gap: 10px; }
   .intro-roles .role { padding: 0; border-left: none; }
   .intro-side { max-width: 300px; }
+  /* 窄屏左侧没有留白，按卡片宽度的 20% 移出，幅度小一点但保证看得见 */
+  .portrait-fan:hover .fan-card--back,
+  .portrait-fan:focus-within .fan-card--back { transform: translate(-20%, -14px) rotate(-6deg); }
   .projects-grid, .honors-grid { grid-template-columns: 1fr; }
   .post-row { grid-template-columns: 1fr auto; gap: 6px 14px; }
   .post-main { grid-column: 1 / -1; grid-row: 2; }
@@ -395,6 +461,9 @@ section.block.soft { background: var(--bg-soft); border-top: 1px solid var(--lin
   .pd-media img, .pd-media video, .pd-media.has-multiple figure:not(:first-child) img, .pd-media.has-multiple figure:not(:first-child) video { height: 240px; }
   .pd-story { grid-template-columns: 1fr; gap: 24px; }
   .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+  .record { grid-template-columns: 1fr; gap: 8px; padding: 24px 0; }
+  .record-meta { flex-direction: row; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; }
+  .record-figure img { height: 220px; }
   .contact-card { padding: 34px 22px; }
   .footer-row { flex-direction: column; align-items: flex-start; }
 }

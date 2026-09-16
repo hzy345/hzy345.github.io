@@ -14,8 +14,21 @@ type ProjectMedia = {
   fit?: string;
   poster?: string;
 };
+type ProjectRecord = {
+  date: string;
+  level?: string;
+  name: string;
+  role?: string;
+  summary?: string;
+  facts?: string[];
+  image?: { src: string; alt: string; caption: string; position?: string };
+  links?: { label: string; href: string }[];
+};
 const { project } = Astro.props;
 const media = (project.media ?? []) as ProjectMedia[];
+const facts = (project.facts ?? []) as string[];
+// 汇总型档案（例如数学建模）：把每次参赛记录按时间倒序排列，新的记录直接追加到数据里
+const records = ([...(project.records ?? [])] as ProjectRecord[]).sort((a, b) => b.date.localeCompare(a.date));
 ---
 
 <Layout title={project.title} description={project.summary}>
@@ -43,16 +56,53 @@ const media = (project.media ?? []) as ProjectMedia[];
           </figure>
         ))}
       </div>
-    ) : (
+    ) : records.length ? null : (
       <div class="placeholder-box">仍待补充：项目实拍、演示视频或系统架构图。当前档案仅使用已经核实的代码与文字信息。</div>
     )}
   </div>
+
+  {records.length > 0 && (
+    <section class="block">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">Records</p>
+          <h2 class="sec-title">参赛记录</h2>
+          <p class="sec-sub">按时间倒序排列，每次比赛的题目、方法、代码与结果都在这里，新的记录会继续追加。</p>
+        </div>
+        <div class="records">
+          {records.map((record) => (
+            <article class="record">
+              <div class="record-meta">
+                <time>{record.date}</time>
+                {record.level && <span class="record-level">{record.level}</span>}
+              </div>
+              <div class="record-body">
+                <h3>{record.name}</h3>
+                {record.role && <p class="record-role">身份：{record.role}</p>}
+                {record.summary && <p class="record-summary">{record.summary}</p>}
+                {record.facts?.length ? <ul class="record-facts">{record.facts.map((fact) => <li>{fact}</li>)}</ul> : null}
+                {record.image && (
+                  <figure class="record-figure">
+                    <img src={record.image.src} alt={record.image.alt} loading="lazy" decoding="async" style={`object-position: ${record.image.position || "center"}`} />
+                    <figcaption>{record.image.caption}</figcaption>
+                  </figure>
+                )}
+                {record.links?.length ? (
+                  <div class="source-links record-links">{record.links.map((link) => <a href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div>
+                ) : null}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="block">
     <div class="wrap pd-story">
       <h2>项目档案</h2>
       <div>
-        <div class="story-block"><h3>我做了什么</h3><ul class="fact-list">{project.facts.map((fact) => <li>{fact}</li>)}</ul></div>
+        {facts.length ? <div class="story-block"><h3>我做了什么</h3><ul class="fact-list">{facts.map((fact) => <li>{fact}</li>)}</ul></div> : null}
         <div class="story-block"><h3>过程与复盘</h3><p>{project.story}</p></div>
         <div class="story-block"><h3>技术与工具</h3><div class="tool-cloud">{project.stack.map((tag) => <span>{tag}</span>)}</div></div>
         {project.links?.length && (
